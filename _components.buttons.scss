@@ -1,0 +1,28 @@
+/*------------------------------------------------------------------*\
+    Button Component
+\*------------------------------------------------------------------*/
+
+/**
+ * The button component for kraftcss
+ */
+ 
+
+// used to calculate color difference under various conditions
+$base-difference-ratio: 5%;
+
+
+
+@mixin button-states($color, $ratio: $base-difference-ratio) {
+    background-color: $color;
+    
+    &:hover    { background-color: lighten($color, $ratio); }
+    
+    &:focus,
+    &:active   { background-color: darken($color, $ratio); }
+    
+    &:disabled {
+        background-color: desaturate(
+            lighten($color, triple($ratio)), quadruple($ratio)
+        );
+    }
+}
